@@ -130,7 +130,12 @@ public class RobotDrive extends Command {
   }
 
   public enum TagDist { // Distance values for april tags
-    ONE(1,100);
+    ONE(1,100),
+    TWO(2,100),
+    THREE(3,100),
+    FOUR(4,100),
+    FIVE(5,100),
+    SIX(6,100);
 
     public int getID() {
       System.out.println("Value not defined!") ;

@@ -28,9 +28,9 @@ public class ArmCommand extends BasicCommand {
                 System.out.println("LIMIT SWITCH DISABLED!!!");
             }
         }
-        if (xbox.getPOV() == 0 && (limit0.get() || limitOverride)) {
+        if ((xbox.getPOV() == 0 || xbox.getRightStickButton()) && (limit0.get() || limitOverride)) {
             power = .5d;
-        } else if (xbox.getPOV() == 180 && (limit1.get() || limitOverride)) {
+        } else if ((xbox.getPOV() == 180 || xbox.getLeftStickButton()) && (limit1.get() || limitOverride)) {
             power = -.5d;
         } else {
             power = 0;
