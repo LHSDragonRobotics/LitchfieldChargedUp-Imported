@@ -21,6 +21,7 @@ public class ArmCommand extends BasicCommand {
 
     public ArmCommand(BasicController subsystem_param, double power_param) {
         super(subsystem_param, power_param);
+        addRequirements(subsystem_param);
         //TODO Auto-generated constructor stub
     }
     public ArmCommand(BasicController subsystem_param, double power_param, MoveGoal goal) {
@@ -69,8 +70,15 @@ public class ArmCommand extends BasicCommand {
         } else {
             power = 0;
         }
-        if (!shouldContinue(true) || !shouldContinue(false)) {
-            stopGoal();
+        if (goal == MoveGoal.TOP) {
+            if (!shouldContinue(true)) {
+                stopGoal();
+            }
+        }
+        if (goal == MoveGoal.BOTTOM) {
+            if (!shouldContinue(false)) {
+                stopGoal();
+            }
         }
         m_subsystem.go(power);
     }
@@ -82,7 +90,7 @@ public class ArmCommand extends BasicCommand {
        }
     }
     return false;
-  }
+    }
     public enum MoveGoal {
         TOP,
         BOTTOM,

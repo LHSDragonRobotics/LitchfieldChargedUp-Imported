@@ -3,52 +3,34 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.77,
-        "y": 5.53
+        "x": 2.4382599407138885,
+        "y": 4.11050362756931
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7700000000000027,
-        "y": 5.53
+        "x": 2.4499707772596704,
+        "y": 4.122214464115091
       },
       "isLocked": false,
-      "linkedName": "Turn Around"
+      "linkedName": "End Star Side 3"
     },
     {
       "anchor": {
-        "x": 3.9255361820281403,
-        "y": 5.53
+        "x": 0.68163445884208,
+        "y": 4.403274541221113
       },
       "prevControl": {
-        "x": 2.9255361820281403,
-        "y": 5.53
+        "x": 0.6699236222962988,
+        "y": 4.426696214312675
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Grab Note 1"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "intake"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -57,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": 121.70142966950573,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Ethan Side 3",
   "previewStartingState": {
     "rotation": 180.0,
     "velocity": 0

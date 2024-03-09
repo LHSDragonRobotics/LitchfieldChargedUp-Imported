@@ -2,19 +2,19 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.9744053724961063,
-      "y": 5.53
+      "x": 0.7284778050297884,
+      "y": 4.414985377759629
     },
-    "rotation": -178.9820974715291
+    "rotation": 121.26254269225008
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "turnAround"
+            "name": "shoot"
           }
         },
         {
@@ -26,7 +26,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Grab note 1"
+            "pathName": "Start Side 3 "
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "S3 Stage 2"
           }
         },
         {
@@ -36,15 +42,15 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "BackToStart"
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "shoot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
           }
         }
       ]

@@ -5,7 +5,9 @@
   "pathFolders": [
     "Ethan Side 3"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "Ethan Auto"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

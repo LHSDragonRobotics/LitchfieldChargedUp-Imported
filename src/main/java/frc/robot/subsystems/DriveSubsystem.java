@@ -123,7 +123,7 @@ public class DriveSubsystem extends SubsystemBase {
     return ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, Rotation2d.fromDegrees(m_gyro.getAngle()));
   }
   public void driveRobotRelative(ChassisSpeeds speeds) {
-    this.drive(speeds.vxMetersPerSecond/2, speeds.vyMetersPerSecond/2, speeds.omegaRadiansPerSecond/1.3, false, false);
+    this.drive(speeds.vxMetersPerSecond/5, speeds.vyMetersPerSecond/5, speeds.omegaRadiansPerSecond/8, false, false);
 }
 
   /**

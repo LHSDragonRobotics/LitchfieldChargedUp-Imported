@@ -31,6 +31,7 @@ import frc.robot.commands.RobotDrive;
 import frc.robot.commands.SuckerCommand;
 import frc.robot.commands.ArmCommand.MoveGoal;
 import frc.robot.commands.autocmd.DrivePathCommand;
+import frc.robot.commands.autocmd.IntakeCommand;
 import frc.robot.commands.autocmd.ShootCommand;
 import frc.robot.subsystems.BasicController;
 import frc.robot.subsystems.DriveSubsystem;
@@ -87,7 +88,9 @@ public class RobotContainer {
 
     NamedCommands.registerCommand("shoot", new ShootCommand(-1)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
     NamedCommands.registerCommand("armDown", new ArmCommand(arm,0,MoveGoal.BOTTOM)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
-    NamedCommands.registerCommand("armUp", new ArmCommand(arm,0,MoveGoal.TOP)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
+    NamedCommands.registerCommand("armUp", new ArmCommand(arm,0,MoveGoal.TOP)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);    
+    NamedCommands.registerCommand("intake", new IntakeCommand()/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
+
 
     
     SmartDashboard.putString("Auto Selector", "path");
