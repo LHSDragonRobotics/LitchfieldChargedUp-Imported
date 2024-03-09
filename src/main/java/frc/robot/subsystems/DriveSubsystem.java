@@ -21,6 +21,8 @@ import edu.wpi.first.math.proto.Kinematics;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.DriverStation;
+import frc.robot.Constants;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.utils.SwerveUtils;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -50,6 +52,9 @@ public class DriveSubsystem extends SubsystemBase {
   // The gyro sensor
   private final ADIS16470_IMU m_gyro = new ADIS16470_IMU();
 
+  double xSpeedCommanded;
+  double ySpeedCommanded;
+
   // Slew rate filter variables for controlling lateral acceleration
   private double m_currentRotation = 0.0;
   private double m_currentTranslationDir = 0.0;
@@ -78,10 +83,10 @@ public class DriveSubsystem extends SubsystemBase {
             this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
             this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
             new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                    new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
-                    new PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
-                    4.5, // Max module speed, in m/s
-                    0.4, // Drive base radius in meters. Distance from robot center to furthest module.
+                    new PIDConstants(AutoConstants.kPXController, 0.0, 0.0), // Translation PID constants
+                    new PIDConstants(AutoConstants.kPYController, 0.0, 0.0), // Rotation PID constants
+                    AutoConstants.kMaxSpeedMetersPerSecond, // Max module speed, in m/s
+                    .4, // Drive base radius in meters. Distance from robot center to furthest module.
                     new ReplanningConfig() // Default path replanning config. See the API for the options here
             ),
             () -> {
@@ -112,10 +117,13 @@ public class DriveSubsystem extends SubsystemBase {
         });
   }
   public ChassisSpeeds getRobotRelativeSpeeds() {
-    return ChassisSpeeds.fromFieldRelativeSpeeds(DriveConstants.kDriveKinematics.toChassisSpeeds(), Rotation2d.fromDegrees(m_gyro.getAngle()));
+    double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
+    double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
+    double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
+    return ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, Rotation2d.fromDegrees(m_gyro.getAngle()));
   }
   public void driveRobotRelative(ChassisSpeeds speeds) {
-    this.drive(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond, speeds.omegaRadiansPerSecond, false, false);
+    this.drive(speeds.vxMetersPerSecond/2, speeds.vyMetersPerSecond/2, speeds.omegaRadiansPerSecond/1.3, false, false);
 }
 
   /**
@@ -156,8 +164,7 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void drive(double xSpeed, double ySpeed, double rot, boolean fieldRelative, boolean rateLimit) {
     
-    double xSpeedCommanded;
-    double ySpeedCommanded;
+
 
     if (rateLimit) {
       // Convert XY to polar for rate limiting

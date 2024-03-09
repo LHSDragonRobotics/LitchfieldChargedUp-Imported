@@ -16,6 +16,8 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -27,17 +29,30 @@ import frc.robot.commands.BasicCommand;
 import frc.robot.commands.DualMotorCommand;
 import frc.robot.commands.RobotDrive;
 import frc.robot.commands.SuckerCommand;
+import frc.robot.commands.ArmCommand.MoveGoal;
+import frc.robot.commands.autocmd.DrivePathCommand;
+import frc.robot.commands.autocmd.ShootCommand;
 import frc.robot.subsystems.BasicController;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.DualMotorController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
+import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import java.util.List;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.path.PathPlannerPath;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -58,17 +73,24 @@ public class RobotContainer {
 
   public static final DigitalInput limit0 = new DigitalInput(0);
   public static final DigitalInput limit1 = new DigitalInput(1);
-
+  public static final WPI_TalonSRX armEncoder = new WPI_TalonSRX(14);
 
   // The driver's controller
   public static XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+
+  public static boolean followPathPlanner = false;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
 
+    NamedCommands.registerCommand("shoot", new ShootCommand(-1)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
+    NamedCommands.registerCommand("armDown", new ArmCommand(arm,0,MoveGoal.BOTTOM)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
+    NamedCommands.registerCommand("armUp", new ArmCommand(arm,0,MoveGoal.TOP)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
 
+    
+    SmartDashboard.putString("Auto Selector", "path");
     //arm.setDefaultCommand(new ArmTeleCommand());
     //claw.setDefaultCommand(new BasicCommand(claw, .1));
     sucker.setDefaultCommand(new SuckerCommand(sucker, 0d));
@@ -140,8 +162,10 @@ boolean USE_REV_CMD = false;
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-
-    return new AutoDrive(0);
+    return new SequentialCommandGroup(
+    AutoBuilder.buildAuto(SmartDashboard.getString("Auto Selector","test"))
+    );
+    //return new SequentialCommandGroup(new ShootCommand(1), new AutoDrive(1));
         // Autos.exampleAuto();
   }
   
