@@ -3,7 +3,8 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
-    "Ethan Side 3"
+    "Ethan Side 3",
+    "Center 4"
   ],
   "autoFolders": [
     "Ethan Auto"

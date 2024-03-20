@@ -1,0 +1,68 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.9744053724961063,
+      "y": 5.53
+    },
+    "rotation": -179.4715243138883
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "turnAround"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armDown"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Grab note 1"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "BackToStart"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "armUp"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

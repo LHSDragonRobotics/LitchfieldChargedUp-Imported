@@ -1,0 +1,131 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.9744053724961063,
+      "y": 5.53
+    },
+    "rotation": 180.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "turnAround"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armDown"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Grab note 1"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "armUp"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "BackToStart"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "armDown"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "lineUpWithNote"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "intake"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "pickUpNote1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "armUp"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "shootingNote1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
