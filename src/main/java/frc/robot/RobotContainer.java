@@ -74,7 +74,7 @@ public class RobotContainer {
 
   public static final DigitalInput limit0 = new DigitalInput(0);
   public static final DigitalInput limit1 = new DigitalInput(1);
-  public static final WPI_TalonSRX armEncoder = new WPI_TalonSRX(14);
+  //public static final WPI_TalonSRX armEncoder = new WPI_TalonSRX(14);
 
   // The driver's controller
   public static XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);

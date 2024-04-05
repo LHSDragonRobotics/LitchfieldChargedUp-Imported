@@ -69,7 +69,7 @@ public class RobotDrive extends Command {
     if (xbox.getBButton()) {
       zRate = (tx/80)*rotrate;
     } else {
-      zRate = xbox.getRawAxis(4)*rotrate;
+      zRate = (xbox.getRawAxis(4)*rotrate)*-;
     }
     // System.out.println(String.valueOf(divrate));
 

@@ -44,7 +44,6 @@ public class ArmCommand extends BasicCommand {
     
     @Override
     public void execute() { 
-        pos = RobotContainer.armEncoder.getSelectedSensorPosition();
         //System.out.println(zeroPos+" "+pos); 
         if (xbox.getAButton() && xbox.getYButton()) {
             holdingFor++;
