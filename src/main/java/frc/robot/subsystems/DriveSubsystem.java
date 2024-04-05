@@ -21,6 +21,7 @@ import edu.wpi.first.math.proto.Kinematics;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
@@ -94,9 +95,14 @@ public class DriveSubsystem extends SubsystemBase {
               // This will flip the path being followed to the red side of the field.
               // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
 
-              var alliance = DriverStation.getAlliance();
+              var alliance = DriverStation.getAlliance(); 
               if (alliance.isPresent()) {
-                return alliance.get() == DriverStation.Alliance.Red;
+                boolean allianceIsBlue = DriverStation.Alliance.Blue == alliance.get();
+                if (SmartDashboard.getBoolean("Swap", allianceIsBlue)) {
+                  return allianceIsBlue;
+                } else {
+                  return !allianceIsBlue;
+                }
               }
               return false;
             },

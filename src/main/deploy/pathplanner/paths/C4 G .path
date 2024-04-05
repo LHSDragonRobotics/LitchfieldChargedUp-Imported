@@ -3,41 +3,64 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.343662687325376,
-        "y": 5.505754088431254
+        "x": 15.753481093267467,
+        "y": 4.45
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.343662687325379,
-        "y": 5.505754088431254
+        "x": 11.959170052434255,
+        "y": 1.8268905011419148
       },
       "isLocked": false,
-      "linkedName": "Turn Around"
+      "linkedName": "Start Side 3 Red"
     },
     {
       "anchor": {
-        "x": 3.35651902073035,
-        "y": 5.53
+        "x": 8.902641713988356,
+        "y": 2.2953239629687014
       },
       "prevControl": {
-        "x": 2.35651902073035,
-        "y": 5.53
+        "x": 11.479025754060286,
+        "y": 1.3584570393061803
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Grab Note 1"
+      "linkedName": "C4 G"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
+      "name": "down",
+      "waypointRelativePos": 0.7,
       "command": {
         "type": "parallel",
         "data": {
           "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "armDown"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0.8,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 0.5
+              }
+            },
             {
               "type": "named",
               "data": {
@@ -57,13 +80,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": -17.969139740157004,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue Side 3!",
+  "folder": "Red Side 3",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 58.50402074622373,
     "velocity": 0
   },
   "useDefaultConstraints": true

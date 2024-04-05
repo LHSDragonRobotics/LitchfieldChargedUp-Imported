@@ -1,0 +1,109 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 15.203071775615735,
+        "y": 5.562647359246215
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 13.329337928290693,
+        "y": 5.820285763253409
+      },
+      "isLocked": false,
+      "linkedName": "R Face Speaker Cen"
+    },
+    {
+      "anchor": {
+        "x": 11.713242484972843,
+        "y": 4.555515416309007
+      },
+      "prevControl": {
+        "x": 12.317352980425532,
+        "y": 4.978392763125893
+      },
+      "nextControl": {
+        "x": 11.244809023141585,
+        "y": 4.227611993027123
+      },
+      "isLocked": false,
+      "linkedName": "Under Stage"
+    },
+    {
+      "anchor": {
+        "x": 8.937774223622627,
+        "y": 4.145636137206654
+      },
+      "prevControl": {
+        "x": 9.136858444900911,
+        "y": 4.19247948338978
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "C3 G"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Down",
+      "waypointRelativePos": 0.3,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "armDown"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "intake",
+      "waypointRelativePos": 1.65,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 0.5
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "intake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "Red 2",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

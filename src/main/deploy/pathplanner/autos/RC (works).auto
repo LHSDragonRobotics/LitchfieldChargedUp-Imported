@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.9275620263080739,
+      "x": 15.226493448707295,
       "y": 5.550936522700434
     },
-    "rotation": -179.09777883846988
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -18,20 +18,21 @@
           }
         },
         {
-          "type": "wait",
+          "type": "sequential",
           "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "across"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "R G2"
+                }
+              }
+            ]
           }
         }
       ]
     }
   },
-  "folder": "test",
+  "folder": null,
   "choreoAuto": false
 }

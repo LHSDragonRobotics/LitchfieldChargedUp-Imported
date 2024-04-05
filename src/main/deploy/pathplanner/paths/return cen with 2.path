@@ -3,34 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.895762099216507,
-        "y": 6.946327738809324
+        "x": 13.891458082488205,
+        "y": 5.527514849608872
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.254410816513942,
-        "y": 5.239346632539419
+        "x": 14.891458082488205,
+        "y": 5.527514849608872
       },
       "isLocked": false,
-      "linkedName": "pickUpNote1"
+      "linkedName": "R Back"
     },
     {
       "anchor": {
-        "x": 1.383130458568611,
-        "y": 5.584689630917723
+        "x": 15.203071775615735,
+        "y": 5.562647359246215
       },
       "prevControl": {
-        "x": 1.4880567908886857,
-        "y": 5.6907592661339175
+        "x": 14.203071775615735,
+        "y": 5.562647359246215
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "R Face Speaker Cen"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -39,13 +50,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue Side 3!",
+  "folder": "Red 2",
   "previewStartingState": {
-    "rotation": 176.33221194446858,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

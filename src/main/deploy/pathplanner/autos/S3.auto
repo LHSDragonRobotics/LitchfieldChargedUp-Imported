@@ -1,0 +1,97 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 15.753481093267467,
+      "y": 4.45
+    },
+    "rotation": 60.07604409429758
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R G3 S3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R R3 S3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R G2 S3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R R2 S3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C4 G "
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C4 R"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C4 G "
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C4 R"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

@@ -5,19 +5,26 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
 public class IntakeCommand extends Command {
-    double startTime;
+    double timeStarted;
     double rate;
+    boolean reverse = false;
+    double timeToStop = 1.25                        ;
 
     public IntakeCommand() {
        addRequirements(RobotContainer.sucker);
     }
     @Override
     public void initialize() { 
+        timeStarted = Timer.getFPGATimestamp();
         System.out.println("Sucking!");
     }
     @Override
     public void execute() {
-        RobotContainer.sucker.go(-.8);
+      if (Timer.getFPGATimestamp() - timeStarted > timeToStop-.3) {
+        RobotContainer.sucker.go(0.2);
+      } else {
+        RobotContainer.sucker.go(-0.8);
+      }
     }
 
     // Called once the command ends or is interrupted.
@@ -27,9 +34,6 @@ public class IntakeCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    Timer.delay(1);
-    RobotContainer.sucker.go(0);
-    System.out.println("Finished sucking");
-    return true;
+    return !RobotContainer.limit2.get() ||Timer.getFPGATimestamp() - timeStarted > timeToStop;
   }
 }

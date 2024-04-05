@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.9744053724961063,
-      "y": 5.53
+      "x": 15.812035275996372,
+      "y": 6.67517683109546
     },
-    "rotation": -179.7356821603098
+    "rotation": -54.90418321297384
   },
   "command": {
     "type": "sequential",
@@ -18,27 +18,51 @@
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "armDown"
+            "pathName": "R G1 S1"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Grab note 1"
+            "pathName": "R R1 S1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "armUp"
+            "name": "shoot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "BackToStart"
+            "pathName": "C2 G S1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C2 R S1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C1 G S1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C1 R S1"
           }
         },
         {

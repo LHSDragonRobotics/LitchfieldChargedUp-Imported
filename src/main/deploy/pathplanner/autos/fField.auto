@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.4357068913852507,
-      "y": 2.0845289051491083
+      "x": 1.36086297850199,
+      "y": 5.58606903233778
     },
-    "rotation": 0
+    "rotation": 179.89002227674797
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "across"
+            "pathName": "fullField"
           }
         }
       ]

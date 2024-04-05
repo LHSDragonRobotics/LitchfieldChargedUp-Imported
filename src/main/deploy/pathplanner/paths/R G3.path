@@ -3,41 +3,64 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.343662687325376,
-        "y": 5.505754088431254
+        "x": 15.203071775615735,
+        "y": 5.562647359246215
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.343662687325379,
-        "y": 5.505754088431254
+        "x": 14.16080732304118,
+        "y": 4.543804579763226
       },
       "isLocked": false,
-      "linkedName": "Turn Around"
+      "linkedName": "R Face Speaker Cen"
     },
     {
       "anchor": {
-        "x": 3.35651902073035,
-        "y": 5.53
+        "x": 13.868036409396641,
+        "y": 4.2978770123018135
       },
       "prevControl": {
-        "x": 2.35651902073035,
-        "y": 5.53
+        "x": 13.87974724594242,
+        "y": 4.27445533921025
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Grab Note 1"
+      "linkedName": "R G3"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "New Event Marker",
+      "name": "Arm Down",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
         "data": {
           "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "armDown"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0.2,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 0.5
+              }
+            },
             {
               "type": "named",
               "data": {
@@ -57,13 +80,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": 43.63607246839694,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue Side 3!",
+  "folder": "Red 2",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

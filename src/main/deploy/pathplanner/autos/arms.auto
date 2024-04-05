@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.9744053724961063,
-      "y": 5.53
+      "x": 2,
+      "y": 2
     },
-    "rotation": -179.7356821603098
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "shoot"
+            "name": "armUp"
           }
         },
         {
@@ -24,9 +24,15 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "Grab note 1"
+            "name": "armUp"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "armDown"
           }
         },
         {
@@ -36,20 +42,14 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "BackToStart"
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "shoot"
+            "name": "armDown"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "test",
   "choreoAuto": false
 }

@@ -3,43 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7284778050297884,
-        "y": 4.414985377759629
+        "x": 14.137385649947245,
+        "y": 5.105924733960641
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2055254879740545,
-        "y": 3.650768839999219
+        "x": 14.851746679242288,
+        "y": 4.555515416309007
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "R G2 S3"
     },
     {
       "anchor": {
-        "x": 2.4382599407138885,
-        "y": 4.11050362756931
+        "x": 15.753481093267467,
+        "y": 4.45
       },
       "prevControl": {
-        "x": 1.4382599407138885,
-        "y": 4.11050362756931
+        "x": 14.86345751578807,
+        "y": 4.532093743217444
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End Star Side 3"
+      "linkedName": "Start Side 3 Red"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 121.6551940165685,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "intake",
-      "waypointRelativePos": 0.65,
+      "name": "Up",
+      "waypointRelativePos": 0.4,
       "command": {
         "type": "parallel",
         "data": {
@@ -47,7 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "intake"
+                "name": "armUp"
               }
             }
           ]
@@ -63,13 +57,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 178.87669728592456,
-    "rotateFast": true
+    "rotation": 56.77740370291666,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue Side 3!",
+  "folder": "Red Side 3",
   "previewStartingState": {
-    "rotation": 119.40718906073367,
+    "rotation": -43.15238973381656,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -13,8 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
@@ -56,6 +58,8 @@ public class RobotDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    SmartDashboard.putBoolean("isAuto", DriverStation.isAutonomous());
+    SmartDashboard.putBoolean("isTele", !DriverStation.isTeleopEnabled());
     double tx = tableInstance.getTable("limelight").getEntry("tx").getDouble(0);
     double ta = tableInstance.getTable("limelight").getEntry("ta").getDouble(0);
     double tagID = tableInstance.getTable("limelight").getEntry("tid").getDouble(0);
@@ -69,7 +73,7 @@ public class RobotDrive extends Command {
     if (xbox.getBButton()) {
       zRate = (tx/80)*rotrate;
     } else {
-      zRate = (xbox.getRawAxis(4)*rotrate)*-;
+      zRate = (xbox.getRawAxis(4)*rotrate);
     }
     // System.out.println(String.valueOf(divrate));
 

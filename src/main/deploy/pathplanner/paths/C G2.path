@@ -3,41 +3,64 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.343662687325376,
-        "y": 5.505754088431254
+        "x": 15.203071775615735,
+        "y": 5.562647359246215
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.343662687325379,
-        "y": 5.505754088431254
+        "x": 11.010592292225953,
+        "y": 6.440960100179829
       },
       "isLocked": false,
-      "linkedName": "Turn Around"
+      "linkedName": "R Face Speaker Cen"
     },
     {
       "anchor": {
-        "x": 3.35651902073035,
-        "y": 5.53
+        "x": 8.80895502161903,
+        "y": 5.785153253616065
       },
       "prevControl": {
-        "x": 2.35651902073035,
-        "y": 5.53
+        "x": 10.764664724764542,
+        "y": 6.768863523461712
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Grab Note 1"
+      "linkedName": "C G2"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
+      "name": "Down",
+      "waypointRelativePos": 0.8,
       "command": {
         "type": "parallel",
         "data": {
           "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "armDown"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "2x Intake",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intake"
+              }
+            },
             {
               "type": "named",
               "data": {
@@ -57,13 +80,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue Side 3!",
+  "folder": "Red 2",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

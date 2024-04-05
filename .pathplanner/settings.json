@@ -3,11 +3,14 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
-    "Ethan Side 3",
-    "Center 4"
+    "Blue Side 3!",
+    "Test",
+    "Red 2",
+    "Red Side 1",
+    "Red Side 3"
   ],
   "autoFolders": [
-    "Ethan Auto"
+    "test"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

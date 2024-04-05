@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.9744053724961063,
-      "y": 5.53
+      "x": 15.226493448707295,
+      "y": 5.550936522700434
     },
-    "rotation": -179.7356821603098
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -18,27 +18,33 @@
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "armDown"
+            "pathName": "R G2"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Grab note 1"
+            "pathName": "return cen with 2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "armUp"
+            "name": "shoot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "BackToStart"
+            "pathName": "R Center Test"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R Center Return Test"
           }
         },
         {

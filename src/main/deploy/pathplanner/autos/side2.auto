@@ -18,12 +18,6 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "turnAround"
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "armDown"
@@ -40,15 +34,15 @@
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "armUp"
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "BackToStart"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "armUp"
                 }
               }
             ]
@@ -61,22 +55,15 @@
           }
         },
         {
-          "type": "sequential",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "armDown"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "lineUpWithNote"
-                }
-              }
-            ]
+            "name": "armDown"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "lineUpWithNote"
           }
         },
         {
@@ -84,15 +71,15 @@
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "intake"
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "pickUpNote1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intake"
                 }
               }
             ]

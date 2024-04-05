@@ -3,43 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7284778050297884,
-        "y": 4.414985377759629
+        "x": 13.868036409396641,
+        "y": 6.792285196553275
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2055254879740545,
-        "y": 3.650768839999219
+        "x": 14.868036409396641,
+        "y": 6.792285196553275
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "R G1"
     },
     {
       "anchor": {
-        "x": 2.4382599407138885,
-        "y": 4.11050362756931
+        "x": 15.203071775615735,
+        "y": 5.562647359246215
       },
       "prevControl": {
-        "x": 1.4382599407138885,
-        "y": 4.11050362756931
+        "x": 14.203071775615735,
+        "y": 5.562647359246215
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End Star Side 3"
+      "linkedName": "R Face Speaker Cen"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 121.6551940165685,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "intake",
-      "waypointRelativePos": 0.65,
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.6,
       "command": {
         "type": "parallel",
         "data": {
@@ -47,7 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "intake"
+                "name": "armUp"
               }
             }
           ]
@@ -63,13 +57,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 178.87669728592456,
-    "rotateFast": true
+    "rotation": 0,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue Side 3!",
+  "folder": "Red 2",
   "previewStartingState": {
-    "rotation": 119.40718906073367,
+    "rotation": -29.427456403189776,
     "velocity": 0
   },
   "useDefaultConstraints": true

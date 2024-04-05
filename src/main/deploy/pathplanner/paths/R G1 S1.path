@@ -3,43 +3,54 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7284778050297884,
-        "y": 4.414985377759629
+        "x": 15.812035275996372,
+        "y": 6.67517683109546
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2055254879740545,
-        "y": 3.650768839999219
+        "x": 15.249915121796398,
+        "y": 7.061634437105522
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Start Side 1 Red"
     },
     {
       "anchor": {
-        "x": 2.4382599407138885,
-        "y": 4.11050362756931
+        "x": 14.289626525044774,
+        "y": 6.885971888919526
       },
       "prevControl": {
-        "x": 1.4382599407138885,
-        "y": 4.11050362756931
+        "x": 15.04768651192081,
+        "y": 6.987317729271692
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End Star Side 3"
+      "linkedName": "R G1 S1"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 121.6551940165685,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
+      "name": "Down",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "armDown"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "intake",
-      "waypointRelativePos": 0.65,
+      "waypointRelativePos": 0.5,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,13 +74,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 178.87669728592456,
-    "rotateFast": true
+    "rotation": -8.13010235430355,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue Side 3!",
+  "folder": "Red Side 1",
   "previewStartingState": {
-    "rotation": 119.40718906073367,
+    "rotation": -60.39554925399511,
     "velocity": 0
   },
   "useDefaultConstraints": true

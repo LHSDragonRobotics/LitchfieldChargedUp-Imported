@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.4357068913852507,
-      "y": 2.0845289051491083
+      "x": 2,
+      "y": 2
     },
     "rotation": 0
   },
@@ -12,9 +12,9 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "across"
+            "name": "armDown"
           }
         }
       ]

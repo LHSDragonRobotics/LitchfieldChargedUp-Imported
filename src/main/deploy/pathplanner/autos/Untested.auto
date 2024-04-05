@@ -53,6 +53,54 @@
           "data": {
             "pathName": "R G1"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R R1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R G3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R R3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C G1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C R1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
         }
       ]
     }

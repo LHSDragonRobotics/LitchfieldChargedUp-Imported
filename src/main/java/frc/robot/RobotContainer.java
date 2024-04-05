@@ -14,6 +14,7 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -73,7 +74,9 @@ public class RobotContainer {
   public static final BasicController arm = new BasicController(13,false);
 
   public static final DigitalInput limit0 = new DigitalInput(0);
-  public static final DigitalInput limit1 = new DigitalInput(1);
+  public static final DigitalInput limit1 = new DigitalInput(1);  
+  public static final DigitalInput limit2 = new DigitalInput(2);
+
   //public static final WPI_TalonSRX armEncoder = new WPI_TalonSRX(14);
 
   // The driver's controller
@@ -87,13 +90,17 @@ public class RobotContainer {
   public RobotContainer() {
 
     NamedCommands.registerCommand("shoot", new ShootCommand(-1)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
-    NamedCommands.registerCommand("armDown", new ArmCommand(arm,0,MoveGoal.BOTTOM)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
-    NamedCommands.registerCommand("armUp", new ArmCommand(arm,0,MoveGoal.TOP)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);    
+    NamedCommands.registerCommand("armDown", new ArmCommand(arm,0,MoveGoal.BOTTOM));
+    NamedCommands.registerCommand("armUp", new ArmCommand(arm,0,MoveGoal.TOP));    
     NamedCommands.registerCommand("intake", new IntakeCommand()/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
 
 
     
     SmartDashboard.putString("Auto Selector", "path");
+    SmartDashboard.putBoolean("SwapSide", false);
+    SmartDashboard.putBoolean("isAuto", DriverStation.isAutonomous());
+    SmartDashboard.putBoolean("isTele", !DriverStation.isTeleopEnabled());
+
     //arm.setDefaultCommand(new ArmTeleCommand());
     //claw.setDefaultCommand(new BasicCommand(claw, .1));
     sucker.setDefaultCommand(new SuckerCommand(sucker, 0d));
@@ -123,11 +130,8 @@ boolean USE_REV_CMD = false;
                     -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
                     false, true),
                 m_robotDrive)
-    
-
         : 
               new RobotDrive()
-              
             );
   }
 
