@@ -1,11 +1,9 @@
 package frc.robot.commands;
 
-import org.opencv.core.Mat;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.BasicController;
 
@@ -28,7 +26,6 @@ public class ArmCommand extends BasicCommand {
         super(subsystem_param, power_param);
         timeStarted = Timer.getFPGATimestamp();
         goal = MoveGoal.NONE;
-        // TODO Auto-generated constructor stub
     }
 
     public ArmCommand(BasicController subsystem_param, double power_param, MoveGoal newGoal) {
@@ -36,13 +33,15 @@ public class ArmCommand extends BasicCommand {
         goal = newGoal;
         isAutonomous = true;
         timeStarted = Timer.getFPGATimestamp();
-        // TODO Auto-generated constructor stub
     }
 
     @Override
     public void initialize() {
         timeStarted = Timer.getFPGATimestamp();
         System.out.println("auto arm! " + goal.nameString);
+ 
+ 
+ 
     }
 
     public boolean shouldContinue(boolean top) {

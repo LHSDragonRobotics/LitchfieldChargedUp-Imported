@@ -6,15 +6,11 @@ package frc.robot.commands;
 
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -31,7 +27,6 @@ public class RobotDrive extends Command {
   
   private XboxController xbox = RobotContainer.m_driverController;
   private static NetworkTableInstance tableInstance = NetworkTableInstance.getDefault();
-  private int printCount = 0;
   static HashMap<Integer,Integer> dists = new HashMap<>();
   public static void fillDists() { //Fills hashmap with enum values
     dists.clear();
@@ -62,7 +57,6 @@ public class RobotDrive extends Command {
     SmartDashboard.putBoolean("isTele", !DriverStation.isTeleopEnabled());
     double tx = tableInstance.getTable("limelight").getEntry("tx").getDouble(0);
     double ta = tableInstance.getTable("limelight").getEntry("ta").getDouble(0);
-    double tagID = tableInstance.getTable("limelight").getEntry("tid").getDouble(0);
     double[] trans = new double[3];
     trans = tableInstance.getTable("limelight").getEntry("targetpose_cameraspace").getDoubleArray(new double[6]);
     double rightTrigger = xbox.getLeftTriggerAxis();
@@ -103,7 +97,7 @@ public class RobotDrive extends Command {
 
      m_subsystem.drive(-yrate, -xrate, -zRate, false, true);
   }
-  public static int getDist(Double id)  {
+  public static int getDist(int id)  {
     if (dists.containsKey(id)) {
       return dists.get(id);
     } else {
@@ -118,7 +112,7 @@ public class RobotDrive extends Command {
     double[] trans = new double[3];
     trans = tableInstance.getTable("limelight").getEntry("targetpose_cameraspace").getDoubleArray(new double[6]);
     double xrate = ((trans[4])/-80)*rotrate;
-    double zRate = tx/getDist(tagID);
+    double zRate = tx/getDist((int)tagID);
     double yrate = ((ta-1)/2)*rotrate;
     m_subsystem.drive(-yrate, -xrate, -zRate, false, true);
   }

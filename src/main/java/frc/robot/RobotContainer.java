@@ -16,22 +16,17 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.PS4Controller.Button;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ArmCommand;
 //import frc.robot.commands.ArmTeleCommand;
-import frc.robot.commands.AutoDrive;
-import frc.robot.commands.Autos;
 import frc.robot.commands.BasicCommand;
 import frc.robot.commands.DualMotorCommand;
 import frc.robot.commands.RobotDrive;
 import frc.robot.commands.SuckerCommand;
 import frc.robot.commands.ArmCommand.MoveGoal;
-import frc.robot.commands.autocmd.DrivePathCommand;
 import frc.robot.commands.autocmd.IntakeCommand;
 import frc.robot.commands.autocmd.ShootCommand;
 import frc.robot.subsystems.BasicController;
@@ -39,22 +34,14 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.DualMotorController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
-import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import java.util.List;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.path.PathPlannerPath;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -69,7 +56,7 @@ public class RobotContainer {
   // Motor controller commands
   //public static final BasicController arm = new BasicController(9);
   //public static final BasicController claw = new BasicController(11);
-  public static final BasicController sucker = new BasicController(10,true);
+  public static final BasicController sucker = new BasicController(10,false);
   public static final DualMotorController thrower = new DualMotorController(11, 12, true);
   public static final BasicController arm = new BasicController(13,false);
 
@@ -117,12 +104,6 @@ boolean USE_REV_CMD = false;
         // Turning is controlled by the X axis of the right stick.
         
         (USE_REV_CMD) ?
-
-
-        /*  TODO, following is rev-template code designed f
-        or field-based drive action.
-             (this is an alternative to the team-robot-drive command...)
-              team testing is not done....... */
               new RunCommand(
                 () -> m_robotDrive.drive(
                     -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),

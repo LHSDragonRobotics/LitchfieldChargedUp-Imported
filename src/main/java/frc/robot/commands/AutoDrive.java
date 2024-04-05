@@ -6,16 +6,11 @@ package frc.robot.commands;
 
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
 
 
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.units.Time;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /** An example command that uses an example subsystem. */
 public class AutoDrive extends Command {
@@ -23,7 +18,7 @@ public class AutoDrive extends Command {
   private final DriveSubsystem m_subsystem;
   private static NetworkTableInstance tableInstance = NetworkTableInstance.getDefault();
 
-  private double rate = 0.3;
+    //private double rate = 0.3;
     double xrate;
     double zRate;
     double yrate;
@@ -61,7 +56,7 @@ public class AutoDrive extends Command {
   public void lockOnTag(float rotrate) {
     double tx = tableInstance.getTable("limelight").getEntry("tx").getDouble(0);
     double ta = tableInstance.getTable("limelight").getEntry("ta").getDouble(0);
-    double tagID = tableInstance.getTable("limelight").getEntry("tid").getDouble(0);
+    //double tagID = tableInstance.getTable("limelight").getEntry("tid").getDouble(0);
     double[] trans = new double[3];
     trans = tableInstance.getTable("limelight").getEntry("targetpose_cameraspace").getDoubleArray(new double[6]);
     if (tx == 0.0) {
