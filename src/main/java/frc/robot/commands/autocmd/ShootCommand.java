@@ -21,7 +21,7 @@ public class ShootCommand extends Command {
     public void execute() {
         RobotContainer.thrower.go(rate);
         Timer.delay(.1);
-        RobotContainer.sucker.go(-1);
+        RobotContainer.sucker.go(1);
     }
 
 // Called once the command ends or is interrupted.

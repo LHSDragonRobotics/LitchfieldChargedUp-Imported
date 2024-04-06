@@ -1,17 +1,26 @@
 package frc.robot.commands.autocmd;
 
+import com.revrobotics.ColorSensorV3;
+
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
 public class IntakeCommand extends Command {
     double timeStarted;
-    double rate;
+    double rate = 0.8;
     boolean reverse = false;
     double timeToStop = 1.25                        ;
 
     public IntakeCommand() {
        addRequirements(RobotContainer.sucker);
+    }
+    public IntakeCommand(double time, double rate) {
+      timeToStop = time;
+      reverse = true;
+      this.rate = rate;
+      addRequirements(RobotContainer.sucker);
     }
     @Override
     public void initialize() { 
@@ -20,10 +29,10 @@ public class IntakeCommand extends Command {
     }
     @Override
     public void execute() {
-      if (Timer.getFPGATimestamp() - timeStarted > timeToStop-.3) {
-        RobotContainer.sucker.go(0.2);
+      if (Timer.getFPGATimestamp() - timeStarted > timeToStop-.1 && !reverse) {
+        RobotContainer.sucker.go(-0.3);
       } else {
-        RobotContainer.sucker.go(-0.8);
+        RobotContainer.sucker.go(rate);
       }
     }
 
@@ -34,6 +43,8 @@ public class IntakeCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !RobotContainer.limit2.get() ||Timer.getFPGATimestamp() - timeStarted > timeToStop;
+    int range = RobotContainer.colorSensor.getProximity();
+    SmartDashboard.putNumber("sensorRange", range);
+    return (range < 5) ||Timer.getFPGATimestamp() - timeStarted > timeToStop;
   }
 }

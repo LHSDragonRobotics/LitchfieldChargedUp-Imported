@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class BasicController extends SubsystemBase {
 
   // Single-motor mechanism....
-  private  MotorController motor = null;
+  public  MotorController motor = null;
 
 
   /** Creates a new DriveSubsystem. */
@@ -23,6 +23,9 @@ public class BasicController extends SubsystemBase {
     } else {
           motor = new CANSparkMax(CANID,  CANSparkLowLevel.MotorType.kBrushless);
     }
+  }
+  public BasicController(CANSparkMax sparkMax) {
+    motor = sparkMax;
   }
 
   @Override

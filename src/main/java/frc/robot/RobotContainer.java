@@ -16,6 +16,7 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
@@ -42,6 +43,9 @@ import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.revrobotics.CANSparkLowLevel;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.ColorSensorV3;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -58,16 +62,19 @@ public class RobotContainer {
   //public static final BasicController claw = new BasicController(11);
   public static final BasicController sucker = new BasicController(10,false);
   public static final DualMotorController thrower = new DualMotorController(11, 12, true);
-  public static final BasicController arm = new BasicController(13,false);
+  public static final CANSparkMax armMotor = new CANSparkMax(13, CANSparkLowLevel.MotorType.kBrushless);
+  public static final BasicController arm = new BasicController(armMotor);
 
   public static final DigitalInput limit0 = new DigitalInput(0);
   public static final DigitalInput limit1 = new DigitalInput(1);  
-  public static final DigitalInput limit2 = new DigitalInput(2);
+  public static final ColorSensorV3 colorSensor = new ColorSensorV3(Port.kOnboard);
 
   //public static final WPI_TalonSRX armEncoder = new WPI_TalonSRX(14);
 
   // The driver's controller
   public static XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  public static XboxController m_driverController2 = new XboxController(OIConstants.kDriverControllerPort2);
+
 
   public static boolean followPathPlanner = false;
 
@@ -80,6 +87,8 @@ public class RobotContainer {
     NamedCommands.registerCommand("armDown", new ArmCommand(arm,0,MoveGoal.BOTTOM));
     NamedCommands.registerCommand("armUp", new ArmCommand(arm,0,MoveGoal.TOP));    
     NamedCommands.registerCommand("intake", new IntakeCommand()/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
+    NamedCommands.registerCommand("backfeed", new IntakeCommand(.25,-.3)/*.withInterruptBehavior(InterruptionBehavior.kCancelIncoming)*/);
+
 
 
     
@@ -129,9 +138,9 @@ boolean USE_REV_CMD = false;
         new JoystickButton(m_driverController, XboxController.Button.kRightBumper.value)
                   .whileTrue(new DualMotorCommand(thrower, .3d));
         new JoystickButton(m_driverController, XboxController.Button.kLeftBumper.value)
-                  .whileTrue(new SuckerCommand(sucker, -.8d));
+                  .whileTrue(new SuckerCommand(sucker, .8d));
         new JoystickButton(m_driverController, XboxController.Button.kX.value)
-                  .whileTrue(new BasicCommand(sucker, .5d));
+                  .whileTrue(new BasicCommand(sucker, -.3d));
         new JoystickButton(m_driverController, XboxController.Button.kY.value)
                   .whileTrue(new DualMotorCommand(thrower, -1d));
         new JoystickButton(m_driverController, XboxController.Button.kY.value)

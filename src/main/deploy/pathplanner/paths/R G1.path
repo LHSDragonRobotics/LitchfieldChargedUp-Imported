@@ -52,19 +52,19 @@
       "name": "New Event Marker",
       "waypointRelativePos": 0,
       "command": {
-        "type": "sequential",
+        "type": "parallel",
         "data": {
           "commands": [
             {
-              "type": "wait",
+              "type": "named",
               "data": {
-                "waitTime": 1.0
+                "name": "intake"
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "intake"
+                "name": "backfeed"
               }
             }
           ]

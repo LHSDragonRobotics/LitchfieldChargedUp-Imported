@@ -1,15 +1,22 @@
 package frc.robot.commands;
 
 
+import com.revrobotics.CANSparkLowLevel;
+import com.revrobotics.CANSparkMax;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Diagnostics;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.BasicController;
 
 public class ArmCommand extends BasicCommand {
     double power = 0;
     private XboxController xbox = RobotContainer.m_driverController;
+    private XboxController xbox2 = RobotContainer.m_driverController2;
     public static final DigitalInput limit0 = RobotContainer.limit0;
     public static final DigitalInput limit1 = RobotContainer.limit1;
     public boolean limitOverride = false;
@@ -21,6 +28,9 @@ public class ArmCommand extends BasicCommand {
     double armSpeed = .8;
     public MoveGoal goal;
     public boolean isAutonomous = false;
+    public static final CANSparkMax armMotor = RobotContainer.armMotor;
+    double armPower = 0;
+    
 
     public ArmCommand(BasicController subsystem_param, double power_param) {
         super(subsystem_param, power_param);
@@ -49,12 +59,13 @@ public class ArmCommand extends BasicCommand {
             m_subsystem.go(0);
             System.out.println(
                     "WARNING!!! PROGRAM FORCEFULLY STOPPED ARM BECAUSE IT TOOK TO LONG!! VERIFY INTEGRITY OF LIMIT SWITCHES OR ARM COULD BE SERIOUSLY DAMAGED!!");
-            return false;
+                    Diagnostics.armError();
+                return false;
         }
         if (top) {
             return (limit0.get());
         } else {
-            return (limit1.get());
+            return (limit1.get() || xbox.getPOV() == 180 && armPower > 40);
         }
     }
 
@@ -70,27 +81,28 @@ public class ArmCommand extends BasicCommand {
             System.out.println("SAFE HOTKEY PRESSED");
             if (holdingFor > 20) {
                 System.out.println("LIMIT SWITCH DISABLED!!!");
+                Diagnostics.armError();
             }
         }
         if (!limit0.get()) {
             zeroPos = pos;
         }
         if (xbox.getLeftStickButton()) {
-            goal = MoveGoal.BOTTOM;
+            //.goal = MoveGoal.BOTTOM;
             timeStarted = Timer.getFPGATimestamp();
         }
         if (xbox.getRightStickButton()) {
             goal = MoveGoal.TOP;
             timeStarted = Timer.getFPGATimestamp();
         }
-        if (xbox.getPOV() == 0 || xbox.getPOV() == 180) {
+        if (xbox.getPOV() == 0 || xbox.getPOV() == 180 || xbox2.getPOV() == 0 || xbox2.getPOV() == 180) {
            armSpeed = .5d; 
         } else {
             armSpeed = 1d;
         }
-        if ((xbox.getPOV() == 0 || goal.equals(MoveGoal.TOP)) && shouldContinue(true)) {
+        if ((xbox.getPOV() == 0 || xbox2.getPOV() == 0 || goal.equals(MoveGoal.TOP)) && shouldContinue(true)) {
             power = armSpeed;
-        } else if ((xbox.getPOV() == 180 || goal.equals(MoveGoal.BOTTOM)) && shouldContinue(false)) {
+        } else if ((xbox.getPOV() == 180 || xbox2.getPOV() == 180 || goal.equals(MoveGoal.BOTTOM)) && shouldContinue(false)) {
             power = -armSpeed;
         } else {
             power = 0;
@@ -105,12 +117,17 @@ public class ArmCommand extends BasicCommand {
             if (goal == MoveGoal.BOTTOM) {
                 if (!shouldContinue(false)) {
                     stopGoal();
-                    System.out.println("stop up!");
+                    System.out.println("stop down!");
                 }
             }
         }
 
 
+        double armPower = armMotor.getOutputCurrent(); 
+        if (armPower > 40) {
+            System.out.println("WARNING: armPower exceded limit! Value was "+armPower);
+            Diagnostics.armError();
+        }
         m_subsystem.go(power);
     }
 
